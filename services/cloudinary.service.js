@@ -13,15 +13,16 @@ const { Readable } = require('stream');
 
 const cloudinaryImageUpload = (imageBuffer) => {
   return new Promise((resolve, reject) => {
-    const uploadStream = cloudinary.uploader.upload_stream(
-      { upload_preset: secret.cloudinary_upload_preset },
-      (error, result) => {
-        if (error) {
-          console.error('Error uploading to Cloudinary:', error);
-          reject(error);
-        } else {
-          resolve(result);
+    let uploadStream = cloudinary.uploader.upload_stream(
+      {
+        resource_type: "image",
+        folder: "Shofy",
+      },
+      function (err, image) {
+        if (err) {
+          reject(err);
         }
+        resolve(image);
       }
     );
 
@@ -32,6 +33,7 @@ const cloudinaryImageUpload = (imageBuffer) => {
     bufferStream.pipe(uploadStream);
   });
 };
+
 
 
 // cloudinaryImageDelete
