@@ -8,7 +8,7 @@ const couponSchema = new mongoose.Schema(
     },
     logo: {
       type: String,
-      required: true,
+      required: false,
     },
     couponCode: {
       type: String,
