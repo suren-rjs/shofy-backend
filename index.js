@@ -24,7 +24,7 @@ const cloudinaryRoutes = require("./routes/cloudinary.routes");
 
 // middleware
 const corsOptions = {
-  origin: "*",
+  origin: "https://shopify-eta-flame.vercel.app",
 };
 
 app.use(cors(corsOptions));
