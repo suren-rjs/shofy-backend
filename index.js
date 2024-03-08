@@ -23,11 +23,11 @@ const adminRoutes = require("./routes/admin.routes");
 const cloudinaryRoutes = require("./routes/cloudinary.routes");
 
 // middleware
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+const corsOptions = {
+  origin: "*",
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
